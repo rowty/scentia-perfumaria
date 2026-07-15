@@ -254,11 +254,14 @@ ul { list-style: none; }
 /* Products */
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 .product-card {
   text-align: left;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .product-card__img {
   background: var(--beige-lighter);
@@ -288,7 +291,7 @@ ul { list-style: none; }
 .btn-buy {
   display: block;
   width: 100%;
-  margin-top: 12px;
+  margin-top: auto;
   padding: 10px 16px;
   border-radius: 999px;
   background: var(--brown);
