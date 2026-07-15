@@ -51,9 +51,9 @@
       <button class="icon-btn" aria-label="Conta">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
       </button>
-      <button class="icon-btn icon-btn--cart" aria-label="Carrinho">
+      <button class="icon-btn icon-btn--cart" id="cart-toggle" aria-label="Carrinho">
         <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
-        <span class="cart-badge">0</span>
+        <span class="cart-badge" id="cart-count">0</span>
       </button>
     </div>
   </div>
@@ -104,6 +104,7 @@
       <h3 class="product-card__name">Kit Victoria's Secret Aqua Kiss</h3>
       <p class="product-card__desc">Floral aquático, aquele cheirinho de banho tomado — fresco e envolvente.</p>
       <p class="product-card__price">R$179,99 <span class="product-card__note">cada · ou R$349,99 o kit</span></p>
+      <button class="btn-buy" data-id="victoria" data-name="Kit Victoria's Secret Aqua Kiss" data-price="179.99" data-image="images/product-victoria.png">Comprar</button>
     </article>
 
     <article class="product-card">
@@ -112,6 +113,7 @@
       <h3 class="product-card__name">Asad Bourbon</h3>
       <p class="product-card__desc">Quente, cremoso e gourmand, dominado por notas adocicadas — o favorito da família Asad.</p>
       <p class="product-card__price">R$329,90 <span class="product-card__note">pronta entrega · frete grátis em LEM</span></p>
+      <button class="btn-buy" data-id="asad-bourbon" data-name="Asad Bourbon" data-price="329.90" data-image="images/product-asad-bourbon.png">Comprar</button>
     </article>
 
     <article class="product-card">
@@ -120,6 +122,7 @@
       <h3 class="product-card__name">Durrat Al Aroos</h3>
       <p class="product-card__desc">Eau de Parfum oriental almiscarado, "A Pérola" — fixação duradoura, doçura e um toque amadeirado.</p>
       <p class="product-card__price">R$289,90</p>
+      <button class="btn-buy" data-id="durrat" data-name="Durrat Al Aroos" data-price="289.90" data-image="images/product-durrat.png">Comprar</button>
     </article>
 
     <article class="product-card">
@@ -128,6 +131,7 @@
       <h3 class="product-card__name">Insp. La Nuit Trésor</h3>
       <p class="product-card__desc">Âmbar baunilha extremamente doce, denso e sensual.</p>
       <p class="product-card__price">R$90,00 <span class="product-card__note">frasco 25ml</span></p>
+      <button class="btn-buy" data-id="la-nuit-tresor" data-name="Insp. La Nuit Trésor" data-price="90.00" data-image="images/product-la-nuit-tresor.png">Comprar</button>
     </article>
 
     <article class="product-card">
@@ -136,6 +140,7 @@
       <h3 class="product-card__name">Asad</h3>
       <p class="product-card__desc">Especiarias e madeiras — pimenta preta e abacaxi, coração de café e patchouli, base de baunilha e âmbar.</p>
       <p class="product-card__price">R$290,00</p>
+      <button class="btn-buy" data-id="asad" data-name="Asad" data-price="290.00" data-image="images/product-asad.png">Comprar</button>
     </article>
 
     <article class="product-card">
@@ -144,6 +149,7 @@
       <h3 class="product-card__name">Insp. Delina</h3>
       <p class="product-card__desc">Romântico e sofisticado — rosa turca, lichia, ruibarbo e notas amadeiradas, alta fixação.</p>
       <p class="product-card__price">R$190,00 <span class="product-card__note">frasco 100ml</span></p>
+      <button class="btn-buy" data-id="delina" data-name="Insp. Delina" data-price="190.00" data-image="images/product-delina.png">Comprar</button>
     </article>
 
     <article class="product-card">
@@ -152,6 +158,7 @@
       <h3 class="product-card__name">Insp. Sauvage</h3>
       <p class="product-card__desc">Fougère aromático versátil e viril — bergamota da Calábria, pimenta e ambroxan.</p>
       <p class="product-card__price">R$190,00 <span class="product-card__note">frasco 100ml</span></p>
+      <button class="btn-buy" data-id="sauvage" data-name="Insp. Sauvage" data-price="190.00" data-image="images/product-sauvage.png">Comprar</button>
     </article>
 
     <article class="product-card">
@@ -160,6 +167,7 @@
       <h3 class="product-card__name">Insp. Lady Million</h3>
       <p class="product-card__desc">Floral frutado luxuoso e vibrante — mel, framboesa e flores brancas.</p>
       <p class="product-card__price">R$90,00 <span class="product-card__note">frasco 25ml</span></p>
+      <button class="btn-buy" data-id="lady-million" data-name="Insp. Lady Million" data-price="90.00" data-image="images/product-lady-million.png">Comprar</button>
     </article>
 
     <article class="product-card">
@@ -168,6 +176,7 @@
       <h3 class="product-card__name">Insp. Invictus</h3>
       <p class="product-card__desc">Amadeirado aquático — casca de toranja e notas marinhas, âmbar cinzento e madeira de guaiac.</p>
       <p class="product-card__price">R$190,00 <span class="product-card__note">frasco 100ml</span></p>
+      <button class="btn-buy" data-id="invictus" data-name="Insp. Invictus" data-price="190.00" data-image="images/promo-invictus.png">Comprar</button>
     </article>
 
     <article class="product-card">
@@ -176,6 +185,7 @@
       <h3 class="product-card__name">Insp. Paradoxe</h3>
       <p class="product-card__desc">Floral ambarado — neroli e jasmim sobre base vibrante de âmbar e almíscar.</p>
       <p class="product-card__price">R$90,00 <span class="product-card__note">frasco 25ml</span></p>
+      <button class="btn-buy" data-id="paradoxe" data-name="Insp. Paradoxe" data-price="90.00" data-image="images/product-paradoxe.png">Comprar</button>
     </article>
 
     <article class="product-card">
@@ -184,6 +194,7 @@
       <h3 class="product-card__name">Insp. Good Girl Supreme</h3>
       <p class="product-card__desc">Oriental floral — jasmim com fava tonka e cacau, a dualidade feminina.</p>
       <p class="product-card__price">R$90,00 <span class="product-card__note">frasco 25ml</span></p>
+      <button class="btn-buy" data-id="good-girl" data-name="Insp. Good Girl Supreme" data-price="90.00" data-image="images/product-good-girl.png">Comprar</button>
     </article>
 
     <article class="product-card">
@@ -192,6 +203,7 @@
       <h3 class="product-card__name">Insp. Scandal</h3>
       <p class="product-card__desc">Chipre floral intenso — mel cremoso e gardênia, doce, sensual e de alta fixação.</p>
       <p class="product-card__price">R$190,00 <span class="product-card__note">frasco 100ml · Linha Brand Collection</span></p>
+      <button class="btn-buy" data-id="scandal" data-name="Insp. Scandal" data-price="190.00" data-image="images/product-scandal.png">Comprar</button>
     </article>
   </div>
 </section>
@@ -245,6 +257,27 @@
 <footer class="footer" id="contato">
   <p>© 2026 Scentia Perfumaria. Todos os direitos reservados.</p>
 </footer>
+
+<!-- Cart -->
+<div class="cart-overlay" id="cart-overlay"></div>
+<aside class="cart-drawer" id="cart-drawer">
+  <div class="cart-drawer__head">
+    <h3>Seu Carrinho</h3>
+    <button class="cart-close" id="cart-close" aria-label="Fechar carrinho">✕</button>
+  </div>
+
+  <div class="cart-drawer__items" id="cart-items">
+    <p class="cart-empty" id="cart-empty">Seu carrinho está vazio.</p>
+  </div>
+
+  <div class="cart-drawer__footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cart-total">R$0,00</span>
+    </div>
+    <button class="btn btn--primary cart-checkout" id="cart-checkout">Finalizar Pedido no WhatsApp</button>
+  </div>
+</aside>
 
 <script src="js/script.js"></script>
 </body>
