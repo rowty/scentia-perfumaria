@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const cartToggle = document.getElementById('cart-toggle');
   const cartFab = document.getElementById('cart-fab');
   const cartClose = document.getElementById('cart-close');
-  const cartOverlay = document.getElementById('cart-overlay');
   const cartDrawer = document.getElementById('cart-drawer');
   const cartItemsEl = document.getElementById('cart-items');
   const cartEmptyEl = document.getElementById('cart-empty');
@@ -37,12 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openCart() {
     cartDrawer.classList.add('is-open');
-    cartOverlay.classList.add('is-open');
   }
 
   function closeCart() {
     cartDrawer.classList.remove('is-open');
-    cartOverlay.classList.remove('is-open');
   }
 
   function renderCart() {
@@ -123,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
   cartToggle.addEventListener('click', openCart);
   cartFab.addEventListener('click', openCart);
   cartClose.addEventListener('click', closeCart);
-  cartOverlay.addEventListener('click', closeCart);
 
   paymentOptionsEl.querySelectorAll('.payment-pill').forEach((pill) => {
     pill.addEventListener('click', () => {
