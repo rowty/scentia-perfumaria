@@ -21,14 +21,19 @@ document.addEventListener('DOMContentLoaded', () => {
   let cart = loadCart();
 
   const cartToggle = document.getElementById('cart-toggle');
+  const cartFab = document.getElementById('cart-fab');
   const cartClose = document.getElementById('cart-close');
   const cartOverlay = document.getElementById('cart-overlay');
   const cartDrawer = document.getElementById('cart-drawer');
   const cartItemsEl = document.getElementById('cart-items');
   const cartEmptyEl = document.getElementById('cart-empty');
   const cartCountEl = document.getElementById('cart-count');
+  const cartCountFabEl = document.getElementById('cart-count-fab');
   const cartTotalEl = document.getElementById('cart-total');
   const cartCheckoutBtn = document.getElementById('cart-checkout');
+  const cartAddressEl = document.getElementById('cart-address');
+  const paymentOptionsEl = document.getElementById('payment-options');
+  let selectedPayment = null;
 
   function openCart() {
     cartDrawer.classList.add('is-open');
@@ -45,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const count = cart.reduce((sum, item) => sum + item.qty, 0);
     cartCountEl.textContent = count;
+    cartCountFabEl.textContent = count;
 
     const total = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
     cartTotalEl.textContent = formatBRL(total);
@@ -115,8 +121,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   cartToggle.addEventListener('click', openCart);
+  cartFab.addEventListener('click', openCart);
   cartClose.addEventListener('click', closeCart);
   cartOverlay.addEventListener('click', closeCart);
+
+  paymentOptionsEl.querySelectorAll('.payment-pill').forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const alreadySelected = pill.classList.contains('is-selected');
+      paymentOptionsEl.querySelectorAll('.payment-pill').forEach((p) => p.classList.remove('is-selected'));
+      if (!alreadySelected) {
+        pill.classList.add('is-selected');
+        selectedPayment = pill.dataset.payment;
+      } else {
+        selectedPayment = null;
+      }
+    });
+  });
 
   cartCheckoutBtn.addEventListener('click', () => {
     if (cart.length === 0) return;
@@ -125,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
       (item) => `${item.qty}x ${item.name} — ${formatBRL(item.price * item.qty)}`
     );
     const total = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
+    const address = cartAddressEl.value.trim();
 
     const message = [
       'Olá! Gostaria de fazer o seguinte pedido na Scentia Perfumaria:',
@@ -132,6 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
       ...lines,
       '',
       `Total: ${formatBRL(total)}`,
+      ...(address ? ['', `Endereço de entrega: ${address}`] : []),
+      ...(selectedPayment ? [`Forma de pagamento: ${selectedPayment}`] : []),
     ].join('\n');
 
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
