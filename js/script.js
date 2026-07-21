@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const cartCheckoutBtn = document.getElementById('cart-checkout');
   const cartAddressEl = document.getElementById('cart-address');
   const paymentOptionsEl = document.getElementById('payment-options');
+  const trocoFieldEl = document.getElementById('troco-field');
+  const cartTrocoEl = document.getElementById('cart-troco');
   let selectedPayment = null;
 
   function openCart() {
@@ -131,6 +133,10 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         selectedPayment = null;
       }
+
+      const isDinheiro = selectedPayment === 'Dinheiro';
+      trocoFieldEl.hidden = !isDinheiro;
+      if (!isDinheiro) cartTrocoEl.value = '';
     });
   });
 
@@ -142,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     const total = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
     const address = cartAddressEl.value.trim();
+    const troco = cartTrocoEl.value.trim();
 
     const message = [
       'Olá! Gostaria de fazer o seguinte pedido na Scentia Perfumaria:',
@@ -151,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `Total: ${formatBRL(total)}`,
       ...(address ? ['', `Endereço de entrega: ${address}`] : []),
       ...(selectedPayment ? [`Forma de pagamento: ${selectedPayment}`] : []),
+      ...(selectedPayment === 'Dinheiro' && troco ? [`Troco para: ${troco}`] : []),
     ].join('\n');
 
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
